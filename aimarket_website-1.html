@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMarket - Sell AI Products Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .hero-button {
+            background: #FFD700;
+            color: #333;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 215, 0, 0.6);
+        }
+
+        /* PRODUCTS SECTION */
+        .products-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 32px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .product-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 12px;
+        }
+
+        .product-button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product-button:hover {
+            transform: scale(1.02);
+        }
+
+        /* PRICING SECTION */
+        .pricing-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-section .section-title {
+            color: #333;
+            text-shadow: none;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .price-card {
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .price-card:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        }
+
+        .price-tag {
+            font-size: 36px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 16px 0;
+        }
+
+        .price-desc {
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .features {
+            text-align: left;
+            color: #666;
+            font-size: 14px;
+            margin: 16px 0;
+            list-style: none;
+        }
+
+        .features li {
+            margin: 8px 0;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: white;
+            color: #f5576c;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .navbar {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">🚀 AIMarket</div>
+        <button class="nav-button">Start Selling</button>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1>AI Products For Everyone</h1>
+        <p>Ready-made AI tools & websites. Sell instantly, earn daily.</p>
+        <button class="hero-button">🎯 Browse AI Products Now</button>
+    </div>
+
+    <!-- PRODUCTS SECTION -->
+    <div class="products-section">
+        <h2 class="section-title">🔥 Our Best-Selling AI Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">🤖</div>
+                <div class="product-name">AI Chatbot Builder</div>
+                <div class="product-desc">Create custom AI chatbots in minutes. No coding required.</div>
+                <div class="product-price">$49.99</div>
+                <button class="product-button">Add to Store</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">✍️</div>
+                <div class="product-name">Content Writer Pro</div>
+                <div class="product-desc">Generate blog posts, emails, ads with AI. 10x faster.</div>
+                <div class="product-price">$39.99</div>
+                <button class="product-button">Add to Store</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🎨</div>
+                <div class="product-name">AI Image Generator</div>
+                <div class="product-desc">Create stunning images from text descriptions instantly.</div>
+                <div class="product-price">$59.99</div>
+                <button class="product-button">Add to Store</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">📊</div>
+                <div class="product-name">Data Analyzer</div>
+                <div class="product-desc">Turn raw data into insights. Generate reports automatically.</div>
+                <div class="product-price">$79.99</div>
+                <button class="product-button">Add to Store</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🎬</div>
+                <div class="product-name">Video Script Generator</div>
+                <div class="product-desc">Write perfect scripts for YouTube, TikTok, Reels.</div>
+                <div class="product-price">$44.99</div>
+                <button class="product-button">Add to Store</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🌐</div>
+                <div class="product-name">Website Builder AI</div>
+                <div class="product-desc">Design websites with AI suggestions. Drag & drop easy.</div>
+                <div class="product-price">$89.99</div>
+                <button class="product-button">Add to Store</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICING SECTION -->
+    <div class="pricing-section">
+        <h2 class="section-title">💰 Seller Plans</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <div class="price-tag">Free</div>
+                <div class="price-desc">Get started today</div>
+                <ul class="features">
+                    <li>✓ 1 AI product</li>
+                    <li>✓ Basic analytics</li>
+                    <li>✓ Email support</li>
+                </ul>
+                <button class="product-button" style="margin-top: 16px;">Start Free</button>
+            </div>
+
+            <div class="price-card">
+                <h3>Professional</h3>
+                <div class="price-tag">$29/mo</div>
+                <div class="price-desc">For serious sellers</div>
+                <ul class="features">
+                    <li>✓ 10 AI products</li>
+                    <li>✓ Advanced analytics</li>
+                    <li>✓ Priority support</li>
+                    <li>✓ Custom branding</li>
+                </ul>
+                <button class="product-button" style="margin-top: 16px;">Upgrade Now</button>
+            </div>
+
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price-tag">$99/mo</div>
+                <div class="price-desc">Maximum earnings</div>
+                <ul class="features">
+                    <li>✓ Unlimited products</li>
+                    <li>✓ Real-time dashboards</li>
+                    <li>✓ 24/7 support</li>
+                    <li>✓ API access</li>
+                </ul>
+                <button class="product-button" style="margin-top: 16px;">Enterprise Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="cta-section">
+        <h2>Ready to Start Your AI Business?</h2>
+        <p>Join 5,000+ sellers earning money with AI products</p>
+        <button class="cta-button">Get Started in 2 Minutes</button>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>© 2026 AIMarket. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+    </div>
+</div>
+
+</body>
+</html>
